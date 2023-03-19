@@ -26,6 +26,8 @@ jobs:
 
     - name: Build container with app
       run: docker run -dp 5000:5000 the-internet:$(date +%s)
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_E2ETESTS}}
 
     - uses: actions/checkout@v3
     - name: Set up JDK 19
