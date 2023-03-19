@@ -22,12 +22,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file the-internet-ui/Dockerfile --tag the-internet:$(date +%s) && docker image ls && docker run -dp 5000:5000 the-internet:$(date +%s)
+      run: docker build . --file the-internet-ui/Dockerfile --tag the-internet:$(date +%s) && docker image ls
 
     - name: Build container with app
-      uses: addnab/docker-run-action@v3
-      with:
-        image: the-internet:$(date +%s)
+      run: docker run -dp 5000:5000 the-internet:$(date +%s)
 
     - uses: actions/checkout@v3
     - name: Set up JDK 19
