@@ -1,4 +1,5 @@
 #!/bin/bash
 
+gem install bundle
 bundle update --bundler
-bundle install
+bundle install --deployment
