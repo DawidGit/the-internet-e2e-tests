@@ -37,6 +37,7 @@ public class TheInternetAppMainPageInit {
         Configuration.downloadsFolder = downloadPath;
         //Configuration.fileDownload = FileDownloadMode.FOLDER;
         Configuration.headless = true;
+        Configuration.webdriverLogsEnabled = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
