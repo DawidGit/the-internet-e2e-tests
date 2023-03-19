@@ -2,8 +2,9 @@ FROM ruby:2.7.2
 
 ADD the-internet-ui/Gemfile /app/
 ADD the-internet-ui/Gemfile.lock /app/
+ADD the-internet-ui/setup.sh /app/
 WORKDIR /app
-RUN bundle install
+RUN setup.sh
 ADD . /app
 
 EXPOSE 5000

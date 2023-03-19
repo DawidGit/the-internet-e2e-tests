@@ -1,5 +1,5 @@
 #!/bin/bash
 
-
-bundle update
+echo "Setup runs"
+bundle update --bundler
 bundle install
