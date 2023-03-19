@@ -1,7 +1,7 @@
 FROM ruby:2.7.2
 
-ADD Gemfile /app/
-ADD Gemfile.lock /app/
+ADD the-internet-ui/Gemfile /app/
+ADD the-internet-ui/Gemfile.lock /app/
 WORKDIR /app
 RUN bundle install
 ADD . /app
