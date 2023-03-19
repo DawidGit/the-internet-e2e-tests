@@ -28,8 +28,6 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         image: the-internet:$(date +%s)
-        ports:
-          - 5000:5000
 
     - uses: actions/checkout@v3
     - name: Set up JDK 19
