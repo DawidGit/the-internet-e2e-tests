@@ -1,15 +1,9 @@
 package com.example.seleniumtests;
 
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -22,30 +16,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TheInternetAppMainPageInit {
-
-    public static final String downloadPath = "src/test/java/resources/downloads";
-
-    public static final File downloadFileDirectory = new File(downloadPath);
+public class TheInternetAppMainPageInit extends SetupBrowser {
 
     public TheInternetAppMainPage mainPage = new TheInternetAppMainPage();
 
     public SelenideElement mainPageMenu = $(By.tagName("ul"));
 
-    @BeforeAll
-    public static void setUpAll() {
-        Configuration.browserSize = "1280x800";
-        Configuration.downloadsFolder = downloadPath;
-        //Configuration.fileDownload = FileDownloadMode.FOLDER;
-        Configuration.headless = true;
-        Configuration.webdriverLogsEnabled = true;
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
-
-    @AfterAll
-    public static void clear() throws IOException {
-        FileUtils.cleanDirectory(downloadFileDirectory);
-    }
 
     @BeforeEach
     public void setUp() {
