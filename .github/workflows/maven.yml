@@ -19,12 +19,11 @@ jobs:
   container-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Build the Docker image
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
       - name: Build container with app
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         run: docker run -p 5000:5000 the-internet
 
       - name: Check health of docker app
