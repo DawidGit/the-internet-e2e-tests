@@ -8,10 +8,11 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/libraries/*
 *.iws
 *.iml
 *.ipr
 
 ## AVOID TEST RESULTS ##
-allure-results/*
+selenium-tests/allure-results/*
 build/reports/tests/*
