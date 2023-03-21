@@ -15,20 +15,23 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  container-job:
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
+
+      - name: Build container with app
+        run: docker run -p 5000:5000 the-internet
+
+      - name: Check health of docker app
+        run: curl -v http://127.0.0.1:5000
+
+  build-job:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
-
-    - name: Build container with app
-      run: docker run -p 5000:5000 the-internet
-
-    - name: Check health of docker app
-      run: curl -v http://127.0.0.1:5000
 
     - uses: actions/checkout@v3
     - name: Set up JDK 19
