@@ -15,6 +15,9 @@ on:
     branches: [ "master" ]
 
 jobs:
+
+  runs-on: ubuntu-latest
+
   container-job:
     steps:
       - uses: actions/checkout@v3
@@ -28,9 +31,6 @@ jobs:
         run: curl -v http://127.0.0.1:5000
 
   build-job:
-
-    runs-on: ubuntu-latest
-
     steps:
 
     - uses: actions/checkout@v3
