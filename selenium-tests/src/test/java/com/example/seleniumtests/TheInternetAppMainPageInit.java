@@ -59,14 +59,6 @@ public class TheInternetAppMainPageInit {
     }
 
     @Test
-    public void googleWorks() throws IOException {
-
-        open("https://www.google.com");
-        $("div[class='RNNXgb']").shouldBe(Condition.appear);
-
-    }
-
-    @Test
     public void checkAvailableElementsInMenu() throws IOException {
 
         ElementsCollection rows = mainPageMenu.$$("li");
