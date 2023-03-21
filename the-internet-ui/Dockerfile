@@ -8,6 +8,6 @@ USER root
 RUN chmod +x setup.sh
 ADD . /app
 
-EXPOSE 80
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "80"]
+EXPOSE 5000
+CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "5000"]
 RUN chmod +x setup.sh
