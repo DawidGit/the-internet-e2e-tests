@@ -1,6 +1,7 @@
 package com.example.seleniumtests;
 
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -55,6 +56,14 @@ public class TheInternetAppMainPageInit {
     public void mainPageInitTest() {
         assertEquals("Welcome to the-internet", mainPage.welcomeSign.getText());
         assertEquals("Available Examples", mainPage.availableExamples.getText());
+    }
+
+    @Test
+    public void googleWorks() throws IOException {
+
+        open("https://www.google.com");
+        $("div[class='RNNXgb']").shouldBe(Condition.appear);
+
     }
 
     @Test
