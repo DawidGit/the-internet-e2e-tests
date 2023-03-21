@@ -16,9 +16,8 @@ on:
 
 jobs:
 
-  runs-on: ubuntu-latest
-
   container-job:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
@@ -31,6 +30,7 @@ jobs:
         run: curl -v http://127.0.0.1:5000
 
   build-job:
+    runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@v3
