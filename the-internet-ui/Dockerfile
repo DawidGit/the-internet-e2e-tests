@@ -9,5 +9,5 @@ RUN chmod +x setup.sh
 ADD . /app
 
 EXPOSE 5000
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "5000"]
+CMD ["bundle", "exec", "rackup", "--host", "127.0.0.1", "-p", "5000"]
 RUN chmod +x setup.sh
