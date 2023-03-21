@@ -5,7 +5,7 @@ ADD the-internet-ui/Gemfile.lock /app/
 ADD the-internet-ui/setup.sh /app/
 WORKDIR /app
 USER root
-RUN chmod +x setup.sh
+RUN bundle install
 ADD . /app
 
 EXPOSE 5000
