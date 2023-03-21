@@ -28,7 +28,7 @@ jobs:
       run: docker run -dp 80:80 the-internet
 
     - name: Check health of docker app
-      run: curl -v http://localhost:5000
+      run: curl -v http://127.0.0.1:5000
 
     - uses: actions/checkout@v3
     - name: Set up JDK 19
