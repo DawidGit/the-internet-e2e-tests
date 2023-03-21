@@ -24,7 +24,7 @@ jobs:
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
       - name: Build container with app
-        if: always()
+        timeout-minutes: 1
         run: docker run -p 5000:5000 the-internet
 
       - name: Check health of docker app
