@@ -29,8 +29,9 @@ jobs:
       - name: Check health of docker app
         run: curl -v http://127.0.0.1:5000
 
-  notify:
-    needs: container-job
+notify:
+  needs: container-job
+
   build-job:
     runs-on: ubuntu-latest
     steps:
