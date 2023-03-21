@@ -25,9 +25,7 @@ jobs:
       run: docker build . --file the-internet-ui/Dockerfile -t the-internet && docker image ls
 
     - name: Build container with app
-      uses: mosteo-actions/docker-run@v1
-      with:
-        image: the-internet
+      run: docker run -dp 80:80 the-internet
 
     - uses: actions/checkout@v3
     - name: Set up JDK 19
