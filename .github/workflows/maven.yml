@@ -24,7 +24,7 @@ jobs:
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
       - name: Build container with app
-        timeout-seconds: 12
+        timeout-minutes: 1
         if: failure()
         run: docker run -p 5000:5000 the-internet
 
