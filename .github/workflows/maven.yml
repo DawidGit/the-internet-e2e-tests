@@ -32,7 +32,6 @@ jobs:
 
 
   build-job:
-    notify:
     needs: container-job
 
     runs-on: ubuntu-latest
