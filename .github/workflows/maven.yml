@@ -24,10 +24,11 @@ jobs:
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
       - name: Build container with app
+        if: always()
         run: docker run -p 5000:5000 the-internet
 
       - name: Check health of docker app
-        run: curl -v http://127.0.0.1:5000
+        run: timeout 300 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://127.0.0.1:5000)" != "200" ]]; do sleep 5; done' || false
 
 
 
