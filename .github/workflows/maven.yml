@@ -30,7 +30,7 @@ jobs:
 
       - name: Check if server is running
         run: |
-          curl -I http://localhost:5000 | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
+          curl -I http://127.0.0.1:5000/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
           echo "Server is up and running"    
 
   build-job:
@@ -47,21 +47,14 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Install dependencies
-      run: cd selenium-tests %% mvn dependency:resolve
+    - name: Setup Chrome`
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: latest
+    - run: chrome --version
 
-    - name: Run tests
-      run: mvn test
-
-
-      #    - name: Setup Chrome`
-#      uses: browser-actions/setup-chrome@v1
-#      with:
-#        chrome-version: latest
-#    - run: chrome --version
-#
-#    - name: Build tests with Maven
-#      run: mvn -B package --file selenium-tests/pom.xml test
+    - name: Build tests with Maven
+      run: mvn -B package --file selenium-tests/pom.xml test
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Move to location with pom

@@ -11,8 +11,8 @@ public class GoogleTest extends SetupBrowser {
     @Test
     public void googleWorks() {
 
-        open("https://www.google.com");
-        $("div[class='RNNXgb']").shouldBe(Condition.appear);
+        open("http://www.columbia.edu/~fdc/sample.html");
+        $("img[alt='Sample image']").shouldBe(Condition.appear);
 
     }
 }
