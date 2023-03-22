@@ -30,7 +30,7 @@ jobs:
 
       - name: Check if server is running
         run: |
-          curl -I http://127.0.0.1:5000/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
+          curl -I http://127.0.0.1:5000/add_remove_elements/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
           echo "Server is up and running"    
 
   build-job:
