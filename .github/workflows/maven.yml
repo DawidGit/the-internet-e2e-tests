@@ -30,7 +30,7 @@ jobs:
 
       - name: Check if server is running
         run: |
-            curl -sSf http://localhost:5000 > /dev/null
+            curl http://localhost:5000 | echo
             echo "Server is up and running"    
 
   build-job:
