@@ -47,21 +47,22 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Setup Chrome`
-      uses: browser-actions/setup-chrome@v1
-      with:
-        cache: maven
-    - run: chrome --version
+    - name: Install Firefox
+      run: |
+        apt-get update
+        apt-get install -y xvfb
+        apt-get install -y firefox
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
     - name: Build tests with Maven
       run: mvn -B package --file selenium-tests/pom.xml test
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - name: Move to location with test
-      run: cd ./selenium-tests
+    - name: Move to location with pom
+      run: cd selenium-tests
 
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
-
       env:
         GITHUB_TOKEN: ${{ secrets.GH_E2ETESTS}}

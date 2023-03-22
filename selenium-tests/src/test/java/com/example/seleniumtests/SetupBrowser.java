@@ -19,6 +19,7 @@ public class SetupBrowser {
 
     @BeforeAll
     public static void setUpAll() {
+        Configuration.browser = "firefox";
         Configuration.browserSize = "1280x800";
         Configuration.downloadsFolder = downloadPath;
         Configuration.timeout = 10000;
