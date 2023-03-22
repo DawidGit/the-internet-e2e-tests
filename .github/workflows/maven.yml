@@ -30,6 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
             context: .
+            file: ./the-internet-ui/Dockerfile
             push: true
             tags: widul/the-internet:latest
 
