@@ -21,7 +21,7 @@ public class SetupBrowser {
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         Configuration.downloadsFolder = downloadPath;
-        //Configuration.fileDownload = FileDownloadMode.FOLDER;
+        Configuration.timeout = 10000;
         Configuration.headless = true;
         Configuration.webdriverLogsEnabled = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
