@@ -24,7 +24,14 @@ jobs:
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
       - name: Build container with app
-        run: docker run -d -p 5000:5000 the-internet
+        run: |
+            docker run -d -p 5000:5000 the-internet
+            sleep 10
+
+      - name: Check if server is running
+        run: |
+            curl -sSf http://localhost:5000 > /dev/null
+            echo "Server is up and running"    
 
   build-job:
     needs: container-job
@@ -47,7 +54,7 @@ jobs:
     - run: chrome --version
 
     - name: Build tests with Maven
-      run: mvn test
+      run: mvn -B package --file selenium-tests/pom.xml test
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
