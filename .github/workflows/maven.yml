@@ -18,15 +18,20 @@ jobs:
 
   container-job:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build the Docker image
-        run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
-      - name: Build container with app
-        run: |
-            docker run -d -p 5000:5000 the-internet
-            sleep 10
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+            context: ./the-internet-ui
+            push: true
+            tags: widul/the-internet:latest
 
       - name: Check if server is running
         run: |
@@ -46,12 +51,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-
-    - name: Setup Chrome`
-      uses: browser-actions/setup-chrome@v1
-      with:
-        chrome-version: latest
-    - run: chrome --version
 
     - name: Build tests with Maven
       run: mvn -B package --file selenium-tests/pom.xml test
