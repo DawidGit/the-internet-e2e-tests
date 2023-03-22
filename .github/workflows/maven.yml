@@ -48,7 +48,7 @@ jobs:
         cache: maven
 
     - name: Install Firefox
-      uses: browser-actions/setup-firefox@v1
+    - uses: browser-actions/setup-firefox@v1
       run: firefox --version
 
     - name: Build tests with Maven
