@@ -9,19 +9,18 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.MutableCapabilities;
-import org.openqa.selenium.logging.*;
-
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Level;
 
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-
 
 public class SetupBrowser {
-
 
 
     public static final String downloadPath = "src/test/java/resources/downloads";
@@ -33,10 +32,10 @@ public class SetupBrowser {
     public static void setUpAll() {
         LoggingPreferences logPrefs = new LoggingPreferences();
         logPrefs.enable(LogType.BROWSER, Level.ALL);
-        logPrefs.enable(LogType.PERFORMANCE,Level.ALL);
+        logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
 
         MutableCapabilities capabilities = new MutableCapabilities();
-        capabilities.setCapability("goog:loggingPrefs",logPrefs);
+        capabilities.setCapability("goog:loggingPrefs", logPrefs);
         capabilities.setCapability("--no-sandbox", true);
         capabilities.setCapability("--disable-dev-shm-usage", true);
         Configuration.browserCapabilities = capabilities;
@@ -47,8 +46,6 @@ public class SetupBrowser {
         Configuration.webdriverLogsEnabled = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        Logs logs = getWebDriver().manage().logs();
-        printLog(logs.get(LogType.BROWSER));
     }
 
     @AfterAll
@@ -58,7 +55,7 @@ public class SetupBrowser {
 
 
     static void printLog(LogEntries entries) {
-        Logger logger= LogManager.getLogger(SetupBrowser.class);
+        Logger logger = LogManager.getLogger(SetupBrowser.class);
         logger.info("{} log entries found", entries.getAll().size());
         for (LogEntry entry : entries) {
             logger.info("{} {} {}",
