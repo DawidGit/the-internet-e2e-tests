@@ -28,14 +28,14 @@ jobs:
 
       - name: Build container with app
         run: |
-          docker run -d -p 5000:5000 the-internet
+          docker run -d -p 5000:5000 --name the-internet-app the-internet
           sleep 10
 
       - name: Check if server is running
         run: |
           curl -I http://127.0.0.1:5000/add_remove_elements/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
           echo "Server is up and running"   
-          sudo docker inspect the-internet
+          sudo docker inspect the-internet-app
 
   build-job:
     needs: container-job
