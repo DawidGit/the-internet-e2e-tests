@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class TheInternetAppMainPage {
 
 
-    public final String mainPageAddress = "https://the-internet.herokuapp.com/";
+    public final String mainPageAddress = "http://localhost:5000/";
 
     public final SelenideElement welcomeSign = $("h1.heading");
 
