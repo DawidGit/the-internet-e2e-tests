@@ -35,7 +35,7 @@ jobs:
         run: |
           curl -I http://127.0.0.1:5000/add_remove_elements/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
           echo "Server is up and running"   
-          docker inspect \-f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' the-internet
+          sudo docker container inspect the-internet
 
   build-job:
     needs: container-job
