@@ -48,7 +48,7 @@ jobs:
         cache: maven
 
     - name: Install dependencies
-      run: mvn dependency:resolve
+      run: cd selenium-tests %% mvn dependency:resolve
 
     - name: Run tests
       run: mvn test
