@@ -48,7 +48,7 @@ jobs:
         cache: maven
 
     - name: Install Firefox
-    - uses: mozilla/setup-firefox@v2
+      uses: mozilla/setup-firefox@v2
 
     - name: Build tests with Maven
       run: mvn -B package --file selenium-tests/pom.xml test
