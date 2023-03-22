@@ -7,8 +7,6 @@ import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.Logs;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +14,6 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TheInternetAppMainPageInit extends SetupBrowser {
@@ -29,8 +26,6 @@ public class TheInternetAppMainPageInit extends SetupBrowser {
     @BeforeEach
     public void setUp() {
         open(mainPage.mainPageAddress);
-        Logs logs = getWebDriver().manage().logs();
-        printLog(logs.get(LogType.BROWSER));
     }
 
     @Test
