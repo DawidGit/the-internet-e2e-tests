@@ -47,8 +47,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - uses: browser-actions/setup-firefox@v1
-    - run: firefox --version
+    - name: Setup Chrome`
+      uses: browser-actions/setup-chrome@v2
+      with:
+        cache: maven
+    - run: chrome --version
 
     - name: Build tests with Maven
       run: mvn -B package --file selenium-tests/pom.xml test
