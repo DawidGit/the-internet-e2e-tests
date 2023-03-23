@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class TheInternetAppMainPage {
 
 
-    public final String mainPageAddress = "http://172.0.0.1:5000/";
+    public final String mainPageAddress = "http://172.17.0.11:5000/";
 
     public final SelenideElement welcomeSign = $("h1.heading");
 
