@@ -28,7 +28,7 @@ jobs:
 
       - name: Build container with app
         run: |
-          docker run -d -p 172.17.0.5:5000:5000 5000:5000 --name the-internet-app the-internet
+          docker run -d -p 172.17.0.5:5000:5000 --name the-internet-app the-internet
           sleep 10
 
       - name: Check if server is running
