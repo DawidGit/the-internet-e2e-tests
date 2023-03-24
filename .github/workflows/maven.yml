@@ -21,12 +21,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy on heroku
-        uses: jctaveras/heroku-deploy@v3.1.0 # use the latest version of the action
+        uses: gonuit/heroku-docker-deploy@v1.3.3 # use the latest version of the action
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
-          app_name: -the-internet-app-e2e-tests # you aplication name
-          dockerfile_path: ./the-internet-ui # set the path to the folder where the Dockerfile is located
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
+          heroku_app_name: -the-internet-app-e2e-tests # you aplication name
+          dockerfile_directory: ./the-internet-ui # set the path to the folder where the Dockerfile is located
           process_type: web # Specify the process
 
       - name: Check if server is running
