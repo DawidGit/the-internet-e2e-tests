@@ -21,17 +21,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy on heroku
-        uses: gonuit/heroku-docker-deploy@v1.3.3 # use the latest version of the action
-        with:
-          email: ${{ secrets.MY_EMAIL }} # your heroku email
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
-          heroku_app_name: the-internet-app-e2e-tests # you aplication name
-          dockerfile_directory: ./the-internet-ui # set the path to the folder where the Dockerfile is located
-          process_type: release # Specify the process
-        env:
-          heroku_email: ${{ secrets.MY_EMAIL }} # your heroku email
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
-        run: heroku container:login
+        run: |
+          sudo docker login --username=${{ secrets.MY_EMAIL }} --password=${{ secrets.HEROKU_API_KEY }}
+          sudo heroku container:login
+          heroku create the-internet-app-e2e-tests
+          sudo heroku container:push web --app the-internet-app-e2e-tests
+          sudo heroku container:release web --app the-internet-app-e2e-tests
 
       - name: Check if server is running
         run: |
