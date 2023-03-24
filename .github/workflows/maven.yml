@@ -21,7 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy on heroku
-      - name: Build Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
