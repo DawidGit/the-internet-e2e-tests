@@ -21,13 +21,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy on heroku
-        uses: jctaveras/heroku-deploy@v1.0.0
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
         with:
-          api_key: ${{secrets.HEROKU_API_KEY}}
-          app_name: the-internet-e2e-tests
-          email: ${{secrets.MY_EMAIL}}
-          dockerfile_path: .
-          process_type: 'test'
+          context: .
+          push: false
+          tags: registry.heroku.com/app-name/web
+
+      - name: Push Docker image to Heroku
+        run: docker push registry.heroku.com/app-name/web
+
+      - name: Release to Heroku
+        uses: actions/heroku@v1.6.0
+        with:
+          args: container:release -a app-name
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
 
       - name: Check if server is running
         run: |
