@@ -23,11 +23,12 @@ jobs:
       - name: Deploy on heroku
         uses: akhileshns/heroku-deploy@v3.12.13 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "the-internet-e2e-tests"
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
           appdir: the-internet-ui
+        env:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
 
       - name: Check if server is running
         run: |
