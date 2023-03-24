@@ -28,12 +28,12 @@ jobs:
           tags: registry.heroku.com/app-name/web
 
       - name: Push Docker image to Heroku
-        run: docker push registry.heroku.com/app-name/web
+        run: docker push registry.heroku.com/the-internet-app-e2e-tests/web
 
       - name: Release to Heroku
-        uses: actions/heroku@v1.6.0
+        uses: actions/heroku@v3.2.4
         with:
-          args: container:release -a app-name
+          args: container:release -a the-internet-app-e2e-tests
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
