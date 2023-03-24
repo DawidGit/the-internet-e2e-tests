@@ -31,6 +31,7 @@ jobs:
         env:
           heroku_email: ${{ secrets.MY_EMAIL }} # your heroku email
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
+        run: heroku container:login
 
       - name: Check if server is running
         run: |
