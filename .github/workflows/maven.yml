@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Deploy on heroku
         run: |
-          sudo docker login --username=${{ secrets.MY_EMAIL }} --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
+          sudo docker login --username=${{ secrets.MY_EMAIL }} --password=${{ secrets.HEROKU_CLI_TOKEN }}
           sudo heroku container:login
           heroku create the-internet-app-e2e-tests
           sudo heroku container:push web --app the-internet-app-e2e-tests
