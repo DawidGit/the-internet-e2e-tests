@@ -20,22 +20,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build the Docker image
-        run: |
-          cd the-internet-ui && \
-          docker build . --file Dockerfile -t the-internet && \
-          docker image ls
-
-      - name: Build container with app
-        run: |
-          docker run -d -p 5000:5000/tcp --name the-internet-app the-internet
-          sleep 10
+      - name: Deploy on heroku
+        uses: jctaveras/heroku-deploy@v1.0.0
+        with:
+          api_key: ${{secrets.HEROKU_API_KEY}}
+          app_name: the-internet-e2e-tests
+          email: ${{secrets.MY_EMAIL}}
+          dockerfile_path: . /the-internet-ui
+          process_type: 'test'
 
       - name: Check if server is running
         run: |
           curl -I http://172.17.0.1:5000/add_remove_elements/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
           echo "Server is up and running"   
-          sudo docker inspect the-internet-app
+          sudo docker inspect the-internet-app    
 
   build-job:
     needs: container-job
