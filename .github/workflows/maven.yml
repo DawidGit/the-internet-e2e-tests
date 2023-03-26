@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Heroku login credentials
         run: |
-           sudo apt-get upgrade heroku
+           sudo apt-get install heroku
            cat > ~/.netrc <<EOF
            machine api.heroku.com
            login ${{ secrets.MY_EMAIL }}
