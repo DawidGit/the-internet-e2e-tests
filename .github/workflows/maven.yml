@@ -31,6 +31,10 @@ jobs:
            login ${{ secrets.MY_EMAIL }}
            password ${{ secrets.HEROKU_CLI_TOKEN }}
            EOF
+          
+          heroku container:login
+          docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
+
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
