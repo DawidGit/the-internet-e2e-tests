@@ -25,10 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+
       - name: Heroku login credentials
         run: |
            docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
-           heroku login --username=_ --password=$HEROKU_API_KEY
+           heroku login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY
 
       - name: Build the Docker image
         run: cd the-internet-ui && docker build --file Dockerfile --no-cache --tag registry.heroku.com/$APP_NAME/web .
