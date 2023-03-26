@@ -35,8 +35,8 @@ jobs:
       - name: Deploy on heroku
         run: |
           heroku create the-internet-app-e2e-tests
-          sudo heroku container:push web --app the-internet-app-e2e-tests
-          sudo heroku container:release web --app the-internet-app-e2e-tests
+          heroku container:push web -a the-internet-app-e2e-tests
+          heroku container:release web -a the-internet-app-e2e-tests
 
       - name: Check if server is running
         run: |
