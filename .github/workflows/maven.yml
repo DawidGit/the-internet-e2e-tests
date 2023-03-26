@@ -20,7 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: Heroku login credentials
         run: |
            cat > ~/.netrc <<EOF
@@ -30,10 +29,9 @@ jobs:
            machine git.heroku.com
            login ${{ secrets.MY_EMAIL }}
            password ${{ secrets.HEROKU_CLI_TOKEN }}
-           EOF
-          
-          heroku container:login
-          docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
+           EOF   
+           heroku container:login
+           docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
 
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
