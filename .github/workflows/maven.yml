@@ -27,14 +27,12 @@ jobs:
       - name: Heroku login credentials
         run: |
            docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-     
 
       - name: Build the Docker image
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet-app-e2e-tests && docker image ls
 
       - name: Deploy on heroku
         run: |
-          heroku create the-internet-app-e2e-tests
           heroku container:push web -a the-internet-app-e2e-tests
           heroku container:release web -a the-internet-app-e2e-tests
 
