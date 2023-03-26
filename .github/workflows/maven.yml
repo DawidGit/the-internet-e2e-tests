@@ -25,10 +25,10 @@ jobs:
            cat > ~/.netrc <<EOF
            machine api.heroku.com
            login ${{ secrets.MY_EMAIL }}
-           password ${{ secrets.HEROKU_CI_TOKEN }}
+           password ${{ secrets.HEROKU_API_KEY }}
            machine git.heroku.com
            login ${{ secrets.MY_EMAIL }}
-           password ${{ secrets.HEROKU_CLI_TOKEN }}
+           password ${{ secrets.HEROKU_API_KEY }}
            EOF   
            heroku container:login
            docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
