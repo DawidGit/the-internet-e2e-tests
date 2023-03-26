@@ -39,8 +39,8 @@ jobs:
 
       - name: Deploy on heroku
         run: |
-          heroku container:push web -a $APP_NAME
-          heroku container:release web -a $APP_NAME
+          heroku container:push -a $APP_NAME web
+          heroku container:release -a $APP_NAME web
 
       - name: Check if server is running
         run: |
