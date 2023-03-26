@@ -26,22 +26,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install Heroku CLI
-        run: curl https://cli-assets.heroku.com/install.sh | sh
-
-      - name: Heroku login credentials
-        run: |
-           docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
-           echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
-           heroku container:login
-
-      - name: Build the Docker image
-        run: cd the-internet-ui && docker build --file Dockerfile --no-cache --tag $APP_NAME . && docker images
-
-      - name: Deploy on heroku
-        run: |
-          heroku container:push -a $APP_NAME web
-          heroku container:release -a $APP_NAME web
+      - name: Build and push Docker to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          # this is the Heroku app name you already set up in dashboard
+          heroku_app_name: the-internet
+            # app directory needs to be set relative to root of repo
+          appdir: "./the-internet-ui"
+            # secrets need to be added to the GitHub repo settings
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_email: ${{ secrets.MY_EMAIL }}
+            # don't change this
+          usedocker: true
 
       - name: Check if server is running
         run: |
