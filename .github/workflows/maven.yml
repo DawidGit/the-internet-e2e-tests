@@ -35,7 +35,7 @@ jobs:
            echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
 
       - name: Build the Docker image
-        run: cd the-internet-ui && docker build --file Dockerfile --no-cache --tag registry.heroku.com/$APP_NAME/web .
+        run: cd the-internet-ui && docker build --file Dockerfile --no-cache -t $APP_NAME .
 
       - name: Deploy on heroku
         run: |
