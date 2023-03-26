@@ -32,7 +32,7 @@ jobs:
       - name: Heroku login credentials
         run: |
            docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
-           heroku login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY
+           echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
 
       - name: Build the Docker image
         run: cd the-internet-ui && docker build --file Dockerfile --no-cache --tag registry.heroku.com/$APP_NAME/web .
