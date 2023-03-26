@@ -34,13 +34,12 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+
+      - name: Build the Docker image
+        run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet-app-e2e-tests && docker image ls
+
       - name: Deploy on heroku
         run: |
-          
-          docker tag the-internet registry.heroku.com/the-internet-app-e2e-tests/web
-          docker  push registry.heroku.com/the-internet-app-e2e-tests/web
-          heroku  container:release web --app=the-internet-app-e2e-tests
-          
           heroku create the-internet-app-e2e-tests
           sudo heroku container:push web --app the-internet-app-e2e-tests
           sudo heroku container:release web --app the-internet-app-e2e-tests
