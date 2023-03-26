@@ -36,7 +36,6 @@ jobs:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Deploy on heroku
         run: |
-          sudo heroku container:login
           
           docker tag the-internet registry.heroku.com/the-internet-app-e2e-tests/web
           docker  push registry.heroku.com/the-internet-app-e2e-tests/web
