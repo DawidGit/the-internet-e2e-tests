@@ -30,7 +30,7 @@ jobs:
            docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
 
       - name: Build the Docker image
-        run: cd the-internet-ui && docker build --file Dockerfile -t $APP_NAME .
+        run: cd the-internet-ui && docker build --file Dockerfile --tag $APP_NAME
 
       - name: Deploy on heroku
         run: |
