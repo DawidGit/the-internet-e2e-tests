@@ -30,12 +30,12 @@ jobs:
            docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
 
       - name: Build the Docker image
-        run: cd the-internet-ui && docker build . --file Dockerfile -t $APP_NAME && docker image ls
+        run: cd the-internet-ui && docker build . --file Dockerfile -t $APP_NAME .
 
       - name: Deploy on heroku
         run: |
-          heroku container:push web -a $APP_NAME
-          heroku container:release web -a $APP_NAME
+          heroku container:push web -app $APP_NAME
+          heroku container:release web -app $APP_NAME
 
       - name: Check if server is running
         run: |
