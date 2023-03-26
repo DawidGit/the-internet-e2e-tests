@@ -30,7 +30,7 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           # this is the Heroku app name you already set up in dashboard
-          heroku_app_name: the-internet
+          heroku_app_name: the-internet-e2e-tests
             # app directory needs to be set relative to root of repo
           appdir: "./the-internet-ui"
             # secrets need to be added to the GitHub repo settings
