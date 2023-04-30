@@ -23,7 +23,7 @@ jobs:
         run: |
           curl -I http://172.17.0.1:5000/add_remove_elements/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
           echo "Server is up and running"   
-          sudo docker inspect the-internet-app
+          sudo docker inspect the-internet
 
       - uses: actions/checkout@v3
       - name: Set up JDK 19
