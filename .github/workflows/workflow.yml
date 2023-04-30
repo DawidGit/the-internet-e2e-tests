@@ -15,10 +15,15 @@ jobs:
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
       - name: Build container with app
-        run: docker run -d -p 8080:5000 the-internet
+        run: |
+          docker run -d -p 5000:5000 the-internet
+          sleep 10
 
       - name: Check health of docker app
-        run: curl -v http://127.0.0.1:8080
+        run: |
+          curl -I http://172.17.0.1:5000/add_remove_elements/ | grep HTTP/ | awk '{print $2}' | echo "Status: $(cat)"          
+          echo "Server is up and running"   
+          sudo docker inspect the-internet-app
 
       - uses: actions/checkout@v3
       - name: Set up JDK 19

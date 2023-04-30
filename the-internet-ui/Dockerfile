@@ -4,7 +4,7 @@ ADD Gemfile /app/
 ADD Gemfile.lock /app/
 WORKDIR /app
 USER root
-RUN bundle update --bundler && bundle install
+RUN bundle update --bundler && gem install bundler:2.4.9
 ADD . /app
 
 EXPOSE 5000
