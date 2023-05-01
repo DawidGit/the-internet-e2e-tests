@@ -47,6 +47,5 @@ jobs:
         uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
         env:
           GITHUB_TOKEN: ${{ secrets.GH_E2ETESTS}}
-        with:
-          pom: $GITHUB_WORKSPACE/selenium-tests/pom.xml
+        directory: $GITHUB_WORKSPACE/selenium-tests/pom.xml
 
