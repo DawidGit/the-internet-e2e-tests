@@ -48,5 +48,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_E2ETESTS}}
         with:
-          pom: ./selenium-tests/pom.xml
+          pom: selenium-tests/pom.xml
 
