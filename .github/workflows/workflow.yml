@@ -47,14 +47,11 @@ jobs:
           ls $GITHUB_WORKSPACE
           ls $GITHUB_WORKSPACE/selenium-tests
 
-      - name: Navigate to location with pom
-        run: cd $GITHUB_WORKSPACE/selenium-tests
-
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
         uses: advanced-security/maven-dependency-submission-action@v3
         with:
-          directory: ./selenium-tests/pom.xml
+          directory: $GITHUB_WORKSPACE/selenium-tests
         env:
           GITHUB_TOKEN: ${{ secrets.GH_E2ETESTS}}
 
