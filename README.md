@@ -1,5 +1,5 @@
 
-![last tests](https://github.com/DawidGit/the-internet-e2e-tests/actions/workflows/workflow.yml/badge.svg)
+![last tests](https://img.shields.io/github/actions/workflow/status/DawidGit/the-internet-e2e-tests/workflow.yml?label=the-internet-e2e-tests%20CI&style=flat-square)
 
 # The-internet-e2e-tests
 
