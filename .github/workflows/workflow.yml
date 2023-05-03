@@ -45,6 +45,8 @@ jobs:
       - name: List files in directory
         run: ls $GITHUB_WORKSPACE/selenium-tests
 
+      - name: Display value of GITHUB_WORKSPACE
+        run: echo $GITHUB_WORKSPACE
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
