@@ -43,8 +43,9 @@ jobs:
         run: mvn -B package --file selenium-tests/pom.xml test
 
       - name: List files in directory
-        run: ls /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests
-
+        run: |
+          ls /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests
+          chmod +x /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests/mvnw
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
         uses: advanced-security/maven-dependency-submission-action@v3
@@ -52,5 +53,5 @@ jobs:
           directory: /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests
         env:
           GITHUB_TOKEN: ${{ secrets.GH_E2ETESTS}}
-        run: chmod +x /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests/mvnw
+
 
