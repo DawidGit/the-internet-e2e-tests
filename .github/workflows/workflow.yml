@@ -50,7 +50,7 @@ jobs:
       - name: Update dependency graph
         uses: advanced-security/maven-dependency-submission-action@v3
         with:
-          directory: /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests
+          directory: $GITHUB_WORKSPACE/selenium-tests
           token: ${{secrets.TOKEN_DEPEN_GRAPH}}
 
 
