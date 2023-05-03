@@ -13,7 +13,8 @@
 .idea/compiler.xml
 .idea/libraries/
 .idea/libraries/*
-.idea/*
+/.idea/*
+/.idea/
 *.iws
 *.iml
 *.ipr
