@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Build the Docker image
         run: cd the-internet-ui && docker build . --file Dockerfile -t the-internet && docker image ls
 
@@ -43,10 +43,9 @@ jobs:
         run: mvn -B package --file selenium-tests/pom.xml test
 
       - name: List files in directory
-        run: ls $GITHUB_WORKSPACE/selenium-tests
-
-      - name: Display value of GITHUB_WORKSPACE
-        run: echo $GITHUB_WORKSPACE
+        run: |
+          ls $GITHUB_WORKSPACE
+          ls $GITHUB_WORKSPACE/selenium-tests
 
       - name: Navigate to location with pom
         run: cd $GITHUB_WORKSPACE/selenium-tests
