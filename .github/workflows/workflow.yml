@@ -45,7 +45,6 @@ jobs:
       - name: List files in directory
         run: |
           ls /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests
-          chmod +x /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests/mvnw
           echo $(readlink -f $GITHUB_WORKSPACE)
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
