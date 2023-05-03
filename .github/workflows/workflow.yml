@@ -51,7 +51,7 @@ jobs:
         uses: advanced-security/maven-dependency-submission-action@v3
         with:
           directory: /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_E2ETESTS}}
+          token: ${{secrets.GH_E2ETESTS}}
+
 
 
