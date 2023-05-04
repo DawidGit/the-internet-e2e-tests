@@ -44,6 +44,9 @@ jobs:
         run: |
           ls /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests
           chmod +x /home/runner/work/the-internet-e2e-tests/the-internet-e2e-tests/selenium-tests/mvnw
+          IP_ADDRESS=$(jq -r '.job.container.networks.bridge[] | select(.type=="v4").gateway' $GITHUB_EVENT_PATH)
+          echo "The IP address of the Docker container is: $IP_ADDRESS"
+          docker ps --format "{{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Networks}}"
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph

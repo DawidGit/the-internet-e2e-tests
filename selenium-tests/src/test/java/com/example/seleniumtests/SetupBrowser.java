@@ -23,7 +23,6 @@ public class SetupBrowser {
     @BeforeAll
     public static void setUpAll() {
         MutableCapabilities capabilities = new MutableCapabilities();
-        capabilities.setCapability("--no-sandbox", true);
         capabilities.setCapability("--disable-dev-shm-usage", true);
         Configuration.browserCapabilities = capabilities;
         Configuration.browserSize = "1280x800";
