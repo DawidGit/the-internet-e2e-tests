@@ -6,7 +6,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.MutableCapabilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,9 +21,6 @@ public class SetupBrowser {
 
     @BeforeAll
     public static void setUpAll() {
-        MutableCapabilities capabilities = new MutableCapabilities();
-        capabilities.setCapability("--disable-dev-shm-usage", true);
-        Configuration.browserCapabilities = capabilities;
         Configuration.browserSize = "1280x800";
         Configuration.downloadsFolder = downloadPath;
         Configuration.timeout = 10000;
